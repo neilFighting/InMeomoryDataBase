@@ -15,10 +15,10 @@ public class DataBaseTest {
         shell.executeSQL("InsertRow Name simon Age 22 Height 175.5");
         shell.executeSQL("InsertRow Name Jojo Age 22 Height 162.1");
         shell.executeSQL("CreateTable Car Brand VARCHAR Seats INT Color CHAR");
-        shell.executeSQL("InsertRow Brand Honda Seats 4 Color W");
-        shell.executeSQL("InsertRow Brand Ford Seats 2 Color R");
-        shell.executeSQL("InsertRow Brand Audi Seats 2 Color S");
-        shell.executeSQL("InsertRow Brand BMW Seats 4 Color R");
+        shell.executeSQL("InsertRow Brand Honda Seats 4 Color A");
+        shell.executeSQL("InsertRow Brand Ford Seats 2 Color B");
+        shell.executeSQL("InsertRow Brand Audi Seats 2 Color C");
+        shell.executeSQL("InsertRow Brand BMW Seats 4 Color D");
     }
 
     //Test For ----------Create Table---------------------------
@@ -133,8 +133,14 @@ public class DataBaseTest {
 
         DataBaseTest test = new DataBaseTest();
         //entrance of the unit test
+        //test.testInsertRow();
+        //test.testUpdateRow();
+        //test.testDeleteRow();
+        //test.testGetAll();
+        //test.testGetLimit();
 
-
+        //test.testOrderBy();
+        //test.testAggregate();
     }
 
     public void sqlTest(String sql, Shell shell) {
@@ -142,7 +148,7 @@ public class DataBaseTest {
         if (shell.executeSQL(sql)) {
             System.out.println("----sql executed successfully----");
         }else{
-            System.out.println("----unable to execute sql");
+            System.out.println("----unable to execute sql----");
         }
     }
 }
