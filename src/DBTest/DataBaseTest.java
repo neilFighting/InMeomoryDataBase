@@ -21,7 +21,7 @@ public class DataBaseTest {
         shell.executeSQL("InsertRow Brand BMW Seats 4 Color R");
     }
 
-    //Test For ----------Create Table---------------------------,
+    //Test For ----------Create Table---------------------------
     //the supported datatype : INT CHAR VARCHAR DOUBLE
     public void testCreateTable() {
         //(1)Test for when create table correctly
@@ -31,6 +31,7 @@ public class DataBaseTest {
         sqlTest("CreateTable Teacher Name String Age Integer", shell);
     }
 
+    //Test For ----------Insert Row---------------------------
     public void testInsertRow() {
         init();
         System.out.println("Before insert, the table is :");
@@ -48,6 +49,8 @@ public class DataBaseTest {
         System.out.println("After insert, the table is :");
         shell.executeSQL("Select * From Person");
     }
+
+    //Test For ----------Delete Row---------------------------
     public void testDeleteRow(){
         init();
         System.out.println("Before the delete, the table is :");
@@ -61,6 +64,7 @@ public class DataBaseTest {
         System.out.println("Aftere the delete, the table is :");
         shell.executeSQL("Select * From Person");
     }
+    //Test For ----------Update Row---------------------------
     public void testUpdateRow(){
         init();
         System.out.println("Before update, the table is :");
@@ -80,6 +84,7 @@ public class DataBaseTest {
         System.out.println("After the update, the table is :");
         shell.executeSQL("Select * From Person");
     }
+    //Test For ----------Select *---------------------------
     public void testGetAll(){
         init();
         //(1)get all rows from table Person
@@ -89,6 +94,7 @@ public class DataBaseTest {
         //(3)get all rows from non-existent Table
         sqlTest("Select * From FOO",shell);
     }
+    //Test For ----------Select * From Limit---------------------------
     public void testGetLimit(){
         init();
         //(1)get limit rows from table Person
@@ -99,6 +105,7 @@ public class DataBaseTest {
         sqlTest("Select * From Person Limit -2",shell);
 
     }
+    //Test For ----------Order By---------------------------
     public void testOrderBy(){
         init();
         //(1)test for Person Table sorted by Name (data type : VARCHAR)
@@ -112,6 +119,7 @@ public class DataBaseTest {
         //(5)test for non-existent column
         sqlTest("Select * From Car Order By Length Limit 4",shell);
     }
+    //Test For ----------Aggregate ---------------------------
     public void testAggregate(){
         init();
         //(1)test for group by primary key
@@ -119,12 +127,12 @@ public class DataBaseTest {
         //(2)test for group by other column
         sqlTest("Select Age Count(*) From Person Group By Age",shell);
     }
-
+    //----------Unit Test Entrance---------------------------
     public static void main(String[] args) {
 
-        //Test For ----------InsertROW---------------------------
+
         DataBaseTest test = new DataBaseTest();
-        test.testAggregate();
+        //entrance of the unit test
 
 
     }
