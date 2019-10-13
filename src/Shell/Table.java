@@ -12,9 +12,11 @@ public class Table {
     private String primaryKey;
     private List<String> sortedList;
     public void setPrimaryKey(String primaryKey) {
+
         this.primaryKey = primaryKey;
     }
 
+    // create Table, initialize the typeMap
     Table(String s){
         String[] args = s.split(" +");
         rowMap = new LinkedHashMap<>();
@@ -26,7 +28,9 @@ public class Table {
             typeMap.put(colName, colType);
         }
     }
-    //create new row and add it to the
+    //put new row into the row map
+    //if the table has primary key, uses primary key's value as Key in the map
+    //else use the insert sequence number as the Key in the map
     public void insertRow(String s) throws Exception{
         //if the table does not have
         if(primaryKey == null){
@@ -44,6 +48,7 @@ public class Table {
             if(rowMap.containsKey(key)){
                 throw new Exception("primary key " + primaryKey + " has to be unqiue");
             }
+
             Row row = new Row(s,typeMap);
             rowMap.put(key,row);
         }
@@ -60,7 +65,7 @@ public class Table {
 
         rowMap.remove(rowKey);
     }
-    //find target row via map and Primary Key, change some of the cells according to the column name
+    //find target row via Primary Key, change some of the cells according to the column name
     public void updateRow(String rowKey, String s) throws Exception{
         if(primaryKey == null)
             throw new Exception("Shell.Table " + name + "does not have primary key");
@@ -79,6 +84,9 @@ public class Table {
         printTable(limit,rowMap.keySet());
     }
 
+    //get all the keys in the map, store them in list
+    //sort them according to the value of the given column
+    //print the whole table according to the list
     public void sortBy(String colName, int limit) throws Exception{
         if(!typeMap.containsKey(colName))
             throw new Exception("the col " + colName + " does not exist");
@@ -95,8 +103,11 @@ public class Table {
                return c1.compareTo(c2);
            }
        });
+        //print the whole table according to the list
         printTable(limit,sortedList);
     }
+    // record the frequency of each value in the given column store that in a map
+    // print that map
     public void aggregate(String colName) throws Exception{
         if(!typeMap.containsKey(colName))
             throw new Exception("col " + colName + "does not exist");
@@ -137,6 +148,7 @@ public class Table {
     }
 
     public Map<String, String> getTypeMap() {
+
         return typeMap;
     }
 

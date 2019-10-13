@@ -141,6 +141,7 @@ public class DataBaseTest {
 
         //test.testOrderBy();
         //test.testAggregate();
+        new Shell().start();
     }
 
     public void sqlTest(String sql, Shell shell) {

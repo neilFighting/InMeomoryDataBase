@@ -6,8 +6,6 @@ import java.util.Set;
 
 
 
-
-
 public class SyntaxChecker {
     public void typeChecking(String s, Set<String> colNames) throws Exception{
         String[] parts = s.split(" +");
