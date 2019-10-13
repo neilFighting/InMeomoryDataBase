@@ -1,0 +1,21 @@
+In each Table, we use Map to store all the rows
+In each Row, we use Map to store all the cells
+
+        Suppose there are n columns in each row
+
+                Time Complexity     Space Complexity
+InsertRow           O(n)                O(n)
+
+DeleteRow           O(1)                O(1)
+
+UpdateRow           O(n)                O(1)
+
+          // suppose there are m rows each table
+
+GetAllRow           O(m * n)            O(1)
+
+GetLimitRow         O(m * n)            O(1)
+
+OrderBy             O(m *logm)    O(m) (to store the ordered list)
+
+Aggregate           O(m)                 O(m)
